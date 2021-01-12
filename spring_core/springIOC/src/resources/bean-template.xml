@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+     	http://www.springframework.org/schema/context/spring-context.xsd">
+     	
+     <bean id="beanTemplate" abstract="true">
+     	<property name = "message1" value = "Hello World!"/>
+      	<property name = "message2" value = "Hello Second World!"/>
+      	<property name = "message3" value = "Namaste World!"/>
+     </bean>	
+
+	<bean id="helloWorld" class="com.beanTemplate.HelloWorld" parent="beanTemplate">
+		<property name = "message1" value = "Hello India!"/>
+      	<property name = "message3" value = "Namaste India!"/>
+	</bean>
+
+	
+</beans>

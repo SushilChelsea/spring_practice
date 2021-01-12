@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <bean id="bds" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
+    	<property name="driverClassName" value="org.postgresql.Driver"></property>
+    	<property name="url" value="jdbc:postgresql://localhost:5432/sushildb"></property>
+    	<property name="username" value="sushil"></property>
+    	<property name="password" value="sushil"></property>
+    	<property name="maxTotal" value="15"></property>
+    	<property name="maxIdle" value="5"></property>
+    	<property name="maxWaitMillis" value="5000"></property>
+    </bean>
+    <bean id="sf" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="bds" />
+    	<property name="hibernateProperties">
+    		<props>
+    			<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+    			<prop key="hibernate.hbm2ddl.auto">update</prop>
+    			<prop key="hibernate.show_sql">true</prop>
+    		</props>
+    	</property>
+    	<property name="annotatedClasses">
+    		<list>
+    			<value>model.Student</value>
+    		</list>
+    	</property>
+    </bean>
+    
+    <bean id="ht" class="org.springframework.orm.hibernate5.HibernateTemplate">
+    	<property name="sessionFactory" ref="sf"></property>
+    </bean>    
+    <bean id="dao" class="dao.StudentDaoHibImpl">
+    	<property name="ht" ref="ht"></property>
+    </bean>   
+    
+</beans>        

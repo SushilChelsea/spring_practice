@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="t" class="com.demo.Test" scope="prototype">
+<!--     	<property name="gender" value="Mr"></property> -->
+		<constructor-arg value="durga" type="String"/>
+		<constructor-arg value="10" type="int"/>
+		<constructor-arg value="durgasoft@gmail.com" type="String"/>
+		<property name="marks">
+			<list >
+				<value>80</value>
+				<value>30</value>
+				<value>70</value>
+				<value>50</value>
+				<value>60</value>
+			</list>
+		</property>
+		<property name="fruits">
+			<util:list></util:list>
+		</property>
+    </bean>
+
+</beans>

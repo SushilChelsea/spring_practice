@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1st C then B and then A object is created by IOC container because of depends-on attribute -->
+    <bean id="a" class="com.client.A" depends-on="b" > <!-- A class depends on B class -->
+    	<property name="b" ref="b"></property>
+    </bean>
+    <bean id="b" class="com.client.B" depends-on="c" > <!-- B class depends on C class -->
+    	<property name="c" ref="c"></property>
+    </bean>
+	<bean id="c" class="com.client.C"/>
+</beans>

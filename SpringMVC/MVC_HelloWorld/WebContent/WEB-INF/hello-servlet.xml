@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- handler -->
+    <!-- default handler mapping no need for manual configure-->
+<!-- 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /> -->
+	<!-- controller -->
+	<bean name="/hello.htm" class="controller.HelloController"></bean>
+	<!-- view resolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/output/" />
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+</beans>
